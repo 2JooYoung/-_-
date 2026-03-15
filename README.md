@@ -1,25 +1,24 @@
-## 기계학습 수업
-- **기계학습 수업 실습 코드**  
-  교재: 혼자 공부하는 머신러닝+딥러닝 (박해선, 한빛미디어)  
-  Google Colab 환경에서 작성한 Jupyter Notebook 모음
+## Jupyter Notebook 개인정보 일괄 제거 스크립트
+
+- **remove_personal_info.py**  
+  `.ipynb` 파일 첫 셀에 포함된 학과/학번/이름을 자동으로 탐지해 일괄 삭제하는 스크립트
 
 ---
 
 ## About
-머신러닝과 딥러닝의 기초부터 심화까지 단계별로 실습한 코드입니다.
+수업에서 제출한 Jupyter Notebook 약 30개에 개인정보가 반복 포함되어 있어,
+수동 수정 대신 Python 스크립트로 자동화했습니다.
 
-- 데이터 전처리 — 훈련/테스트 세트 분리, 샘플링 편향, NumPy
-- 회귀 — k-최근접 이웃 회귀, 선형 회귀, 다항 회귀, 다중 회귀
-- 분류 — 로지스틱 회귀, 확률적 경사 하강법
-- 트리 알고리즘 — 결정 트리, 랜덤 포레스트, 그레이디언트 부스팅
-- 비지도 학습 — k-평균 군집, PCA 차원 축소
-- 신경망 — 인공 신경망, CNN, RNN / LSTM
+- `.ipynb`가 JSON 구조임을 파악해 파싱 방식으로 접근
+- `glob`으로 폴더 내 파일 재귀 탐색 후 일괄 처리
+- 정규표현식으로 학과/학번/이름 패턴만 정확히 감지해 제거
+- 트러블슈팅 경험 포함 (경로 오류 디버깅)
+```bash
+python remove_personal_info.py
+```
 
 ---
 
 ## Tech Stack
 - Python 3
-- Google Colab
-- scikit-learn
-- TensorFlow 2.x / Keras
-- NumPy
+- json / glob / re (표준 라이브러리)
